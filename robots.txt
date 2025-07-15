@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tanvirhait17.github.io/tanvirhait.github.io/sitemap.xml

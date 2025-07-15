@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEO Blog by Tanvir Hait | Latest SEO Tips & Strategies</title>
+  <meta name="description" content="Explore expert-written SEO guides, practical link-building tips, and real-world case studies to boost your website’s visibility. Updated regularly by SEO expert Tanvir Hait.">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2550/2550271.png" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      background: #0f172a; /* Fallback color */
+      background-image: url('background.png'); /* Your background image URL */
+      background-size: cover; /* Cover the entire background */
+      background-position: center; /* Center the image */
+      background-repeat: no-repeat; /* Do not repeat the image */
+      background-attachment: fixed; /* Keep the background fixed when scrolling */
+      color: #cbd5e1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.02); /* Even less opaque for a significantly brighter background */
+      z-index: -1;
+    }
+
+    #scroll-container {
+      flex: 1;
+      overflow-y: auto;
+      padding-top: 100px;
+      padding-bottom: 80px;
+      scroll-behavior: smooth;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation-fill-mode: forwards;
+      animation-name: fadeInUp;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+      will-change: opacity, transform;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hover-scale-shadow:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 25px -5px rgba(124, 58, 237, 0.6),
+                  0 10px 10px -5px rgba(99, 102, 241, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 10;
+      position: relative;
+    }
+
+    header, footer {
+      background-color: rgba(15, 23, 42, 0.4);
+      backdrop-filter: saturate(180%) blur(10px); /* Blur completely removed */
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+      border-radius: 0.5rem;
+    }
+
+    nav a {
+      color: #cbd5e1;
+      transition: color 0.3s ease;
+      position: relative; /* Needed for absolute positioning of the pseudo-element */
+      text-decoration: none; /* Remove default underline */
+    }
+
+    nav a:hover {
+      color: #a78bfa;
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      width: 0; /* Start with no width */
+      height: 3px; /* Increased thickness of the underline */
+      bottom: -5px; /* Position below the text */
+      left: 0; /* Start from the left */
+      background-color: #a78bfa; /* Color of the underline */
+      visibility: hidden; /* Hidden by default */
+      transition: all 0.3s ease-in-out; /* Animation for width and visibility */
+    }
+
+    nav a:hover::before {
+      visibility: visible; /* Make visible on hover */
+      width: 100%; /* Expand to full width on hover */
+    }
+
+    /* For mobile menu links */
+    #mobile-menu a {
+      position: relative;
+      text-decoration: none;
+    }
+
+    #mobile-menu a::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px; /* Increased thickness for mobile */
+      bottom: -3px; /* Adjust position for mobile */
+      left: 0;
+      background-color: #a78bfa;
+      visibility: hidden;
+      transition: all 0.3s ease-in-out;
+    }
+
+    #mobile-menu a:hover::before {
+      visibility: visible;
+      width: 100%;
+    }
+
+    #loading-overlay {
+      position: fixed;
+      inset: 0;
+      background: #0f172a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 50;
+      transition: opacity 0.5s ease;
+    }
+
+    #loading-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .spinner {
+      border: 6px solid rgba(255, 255, 255, 0.2);
+      border-top-color: #a78bfa;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading overlay -->
+  <div id="loading-overlay">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="fixed w-full z-20 h-[80px] flex items-center px-6">
+    <div class="max-w-7xl w-full mx-auto flex items-center justify-between">
+      <a class="text-2xl font-bold text-indigo-400 hover:text-indigo-300" href="index.html">Tanvir Hait</a>
+      <nav class="hidden md:flex space-x-8 font-semibold">
+        <a class="hover:text-indigo-400" href="index.html#home">Home</a>
+        <a class="hover:text-indigo-400" href="index.html#about">About</a>
+        <a class="hover:text-indigo-400" href="index.html#services">Services</a>
+        <a class="hover:text-indigo-400" href="index.html#portfolio">Case Studies</a>
+        <a class="hover:text-indigo-400" href="index.html#blog">Blog</a>
+        <a class="hover:text-indigo-400" href="index.html#contact">Contact</a>
+      </nav>
+  
+      <!-- Mobile menu toggle button -->
+      <button
+        id="menu-btn"
+        class="md:hidden text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <i class="fas fa-bars fa-lg"></i>
+      </button>
+    </div>
+  
+    <!-- Mobile menu -->
+    <nav
+      id="mobile-menu"
+      class="hidden md:hidden absolute top-full left-0 right-0 shadow-md"
+      style="
+        background-color: rgba(15, 23, 42, 0.85);
+        backdrop-filter: saturate(180%) blur(0px); /* Blur completely removed */
+        -webkit-backdrop-filter: saturate(180%) blur(0px); /* Blur completely removed */
+        border-radius: 0 0 0.5rem 0.5rem;
+      "
+      aria-label="Mobile navigation"
+    >
+      <a href="index.html#home" class="block px-6 py-3 border-b border-gray-700 font-semibold text-gray-300 hover:bg-indigo-900">Home</a>
+      <a href="index.html#about" class="block px-6 py-3 border-b border-gray-700 font-semibold text-gray-300 hover:bg-indigo-900">About</a>
+      <a href="index.html#services" class="block px-6 py-3 border-b border-gray-700 font-semibold text-gray-300 hover:bg-indigo-900">Services</a>
+      <a href="index.html#portfolio" class="block px-6 py-3 border-b border-gray-700 font-semibold text-gray-300 hover:bg-indigo-900">Case Studies</a>
+      <a href="index.html#blog" class="block px-6 py-3 border-b border-gray-700 font-semibold text-gray-300 hover:bg-indigo-900">Blog</a>
+      <a href="index.html#contact" class="block px-6 py-3 font-semibold text-gray-300 hover:bg-indigo-900">Contact</a>
+    </nav>
+  </header>
+  
+
+  <!-- Main content -->
+  <main id="scroll-container">
+    <section class="max-w-7xl mx-auto px-6 py-20">
+      <h1 class="text-4xl font-bold text-indigo-400 mb-10 fade-in">Blog Posts</h1>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <article class="bg-gray-900 bg-opacity-90 rounded-lg shadow-lg overflow-hidden hover-scale-shadow fade-in">
+          <img
+            src="https://storage.googleapis.com/a1aa/image/ff87b893-b77a-40ff-d76a-701b005f2d2b.jpg"
+            alt="SEO Post"
+            class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105"
+            height="400"
+            loading="lazy"
+            width="600"
+          />
+          <div class="p-6">
+            <h2 class="text-xl font-semibold mb-2 select-text">How to Conduct Effective Keyword Research in 2025</h2>
+            <p class="text-gray-300 text-sm mb-4 select-text">Discover the latest tools and techniques to find high-impact keywords for your SEO campaigns.</p>
+            <a href="blog-Keyword-Research.html" class="text-indigo-400 font-semibold hover:underline transition duration-300"
+            >Read More</a>
+          </div>
+        </article>
+        <article
+        class="bg-gray-900 bg-opacity-90 rounded-lg shadow-lg overflow-hidden hover-scale-shadow fade-in"
+        style="animation-delay: 0.4s"
+      >
+       <img
+         alt="Blog post image showing SEO content optimization with highlighted text and analytics"
+         class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105"
+         height="400"
+         loading="lazy"
+         src="https://storage.googleapis.com/a1aa/image/1c77851f-c093-431c-f081-a9feb7a8aebd.jpg"
+         width="600"
+       />
+       <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2 select-text">
+         Top On-Page SEO Techniques to Boost Rankings
+        </h3>
+        <p class="text-gray-300 text-sm mb-4 select-text">
+         Learn how to optimize your website content and meta tags for better
+         search engine visibility.
+        </p>
+        <a
+          class="text-indigo-400 font-semibold hover:underline transition duration-300"
+          href="blog-On-Page-SEO.html"
+          >Read More</a
+        >
+       </div>
+      </article>
+      <article
+        class="bg-gray-900 bg-opacity-90 rounded-lg shadow-lg overflow-hidden hover-scale-shadow fade-in"
+        style="animation-delay: 0.5s"
+      >
+       <img
+         alt="Blog post image showing link building strategy with network connections and SEO icons"
+         class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105"
+         height="400"
+         loading="lazy"
+         src="https://storage.googleapis.com/a1aa/image/0785d536-04b0-4443-9309-7aac18eb7cbd.jpg"
+         width="600"
+       />
+       <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2 select-text">
+         Effective Link Building Strategies for 2024
+        </h3>
+        <p class="text-gray-300 text-sm mb-4 select-text">
+         Explore proven methods to build high-quality backlinks that improve
+         your site's authority.
+        </p>
+        <a
+          class="text-indigo-400 font-semibold hover:underline transition duration-300"
+          href="blog-Link-Building-Strategies.html"
+          >Read More</a
+        >
+       </div>
+      </article>
+        <!-- Add more blog posts here -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-indigo-900 bg-opacity-90 text-indigo-300 py-12 mt-auto rounded-t-xl">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
+      <div>
+        <h3 class="text-xl font-semibold mb-4">Subscribe to Newsletter</h3>
+        <form class="flex flex-col sm:flex-row gap-4" action="#" method="POST">
+          <input type="email" name="newsletter-email" placeholder="Your email address" class="px-4 py-3 rounded-md border border-gray-700 bg-gray-800 text-gray-200" required />
+          <button type="submit" class="px-6 py-3 bg-indigo-600 text-white rounded-md font-semibold hover:bg-indigo-700">Subscribe</button>
+        </form>
+      </div>
+      <div class="flex justify-center md:justify-center space-x-8">
+        <a class="text-3xl hover:text-indigo-300" href="#"><i class="fab fa-facebook-f"></i></a>
+        <a class="text-3xl hover:text-indigo-300" href="#"><i class="fab fa-twitter"></i></a>
+        <a class="text-3xl hover:text-indigo-300" href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a class="text-3xl hover:text-indigo-300" href="#"><i class="fab fa-github"></i></a>
+      </div>
+      <div class="text-center md:text-right text-gray-400 text-sm">
+        © 2025 Tanvir Hait. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for animation and loading -->
+  <script>
+    window.addEventListener("load", () => {
+      document.getElementById("loading-overlay").classList.add("hidden");
+    });
+
+    const faders = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = "running";
+          entry.target.style.opacity = 1;
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    faders.forEach(f => {
+      f.style.animationPlayState = "paused";
+      observer.observe(f);
+    });
+  </script>
+  <script>
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+  
+    menuBtn.addEventListener("click", () => {
+      const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+      menuBtn.setAttribute("aria-expanded", !expanded);
+      mobileMenu.classList.toggle("hidden");
+    });
+  </script>
+  
+</body>
+</html>
